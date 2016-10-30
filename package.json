@@ -20,7 +20,9 @@
     "nodemon": "^1.11.0",
     "path": "^0.12.7",
     "pg": "^6.1.0",
-    "sequelize": "^3.24.5"
+    "sequelize": "^3.24.5",
+    "socket.io": "^1.5.1",
+    "socket.io-client": "^1.5.1"
   },
   "devDependencies": {
     "webpack": "^1.13.2"

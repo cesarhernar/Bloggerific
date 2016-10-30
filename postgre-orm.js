@@ -28,28 +28,28 @@ function record(entry) {
 }
 
 //users
-var User = seq.define('users', {
-  user: { type: Sequelize.STRING },
-  password: { type: Sequelize.STRING }
-});
+// var User = seq.define('users', {
+//   user: { type: Sequelize.STRING },
+//   password: { type: Sequelize.STRING }
+// });
 
 
-User.sync({ force: true }).then(() => { 
-  console.log('successfully synced users smpai')
-})
+// User.sync({ force: true }).then(() => { 
+//   console.log('successfully synced users smpai')
+// })
 
-User.create({
-  user: 'rasec',
-  password: 'password'
-}).then(res => { 
-  console.log(res);
-})
+// User.create({
+//   user: 'rasec',
+//   password: 'password'
+// }).then(res => { 
+//   console.log(res);
+// })
 
 
-function check(arg) {
+// function check(arg) {
   
-  return User.findOne({ where: { user: arg } })
+//   return User.findOne({ where: { user: arg } })
 
-}
-module.exports = {Submission, record, check};
+// }
+module.exports = {Submission, record};
 

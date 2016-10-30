@@ -1,29 +1,17 @@
 
-
 angular.module('blogcontroller', ['userFactory'])
   .controller('blogcontroller', ['$http', 'userFactory',  blogcont])
 
 
 function blogcont($http, userfactory) {
+  // var socket = io.connect();
   this.entry = '';
+  
   this.submit = () => { 
-  console.log(userfactory.user, userfactory.password)
-  var req = {
-    method: 'POST',
-    url: '/submitentry',
-    type: {
-      'Content-Type': 'application/json'
-    }, 
-    data: JSON.stringify({submission: this.entry})
-  }
-  $http(req).then((err) => { 
-    if (err) {
-      console.log('this is an error')
-      console.error(err);
-    }
-  })
+  userfactory.socket.emit('message')  
+  console.log('userId:', userfactory.id)
+  console.log('user:', userfactory.user)
   this.entry = '';
-  console.log(this.entry);
 }
 }
 

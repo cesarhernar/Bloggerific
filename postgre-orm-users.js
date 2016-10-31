@@ -1,13 +1,13 @@
 const Sequelize = require('sequelize');
 
 
-var seq = new Sequelize('personalproj', 'postgres', '1234', {
+var seq = new Sequelize('postegres', 'cesar', '1234', {
   host: 'localhost',
   dialect: 'postgres',
 });
 
 
-seq.authenticate().then((err) => { 
+seq.authenticate().then((err) => {
   if (err) console.error(err)
   else console.log('hacked the mainframe senpai')
 })
@@ -18,7 +18,7 @@ var User = seq.define('users', {
 });
 
 
-User.sync({ force: true }).then(() => { 
+User.sync({ force: true }).then(() => {
   console.log('successfully synced users smpai')
 })
 

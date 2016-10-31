@@ -1,29 +1,31 @@
 const Sequelize = require('sequelize');
 
-//var url = "postgres://rasec:Ac02544910@localhost/personalproj";
-
-var seq = new Sequelize('personalproj', 'postgres', '1234', {
+var seq = new Sequelize('postgres', 'cesar', '1234', {
   host: 'localhost',
   dialect: 'postgres',
 });
 
 
-seq.authenticate().then((err) => { 
+seq.authenticate().then((err) => {
   if (err) console.error(err)
   else console.log('hacked the mainframe senpai')
 })
 //add foreign key corresponding to a given user;
 var Submission = seq.define('posts', {
-  content: {type: Sequelize.STRING}
+  user: {type: Sequelize.STRING},
+  identify: {type: Sequelize.STRING},
+  post: {type: Sequelize.TEXT}
 });
 
 
-Submission.sync({ force: true }).then(() => { 
+Submission.sync({ force: true }).then(() => {
   console.log('successfully synced smpai')
 })
 
-function record(entry) { 
-  Submission.create({ content: entry });
+function record(entry) {
+  Submission.create({user: entry.user, identify: entry.id, post: entry.post}).then(result => {
+    console.log('post was a success');
+  });
 
 }
 
@@ -34,22 +36,21 @@ function record(entry) {
 // });
 
 
-// User.sync({ force: true }).then(() => { 
+// User.sync({ force: true }).then(() => {
 //   console.log('successfully synced users smpai')
 // })
 
 // User.create({
 //   user: 'rasec',
 //   password: 'password'
-// }).then(res => { 
+// }).then(res => {
 //   console.log(res);
 // })
 
 
 // function check(arg) {
-  
+
 //   return User.findOne({ where: { user: arg } })
 
 // }
 module.exports = {Submission, record};
-

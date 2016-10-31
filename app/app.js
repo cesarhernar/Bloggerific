@@ -1,13 +1,13 @@
 
 const app = angular
   .module('myApp', [
-    'ngRoute', 
+    'ngRoute',
     'blogcontroller',
     'signincontroller'
   ]);
 
 app.config(configFunction);
- 
+
 
 function configFunction($routeProvider) {
 
@@ -19,5 +19,9 @@ function configFunction($routeProvider) {
     .when('/blog', {
       templateUrl: './app/partials/blog.html',
       controller: 'blogcontroller'
+    })
+    .when('/posts', {
+      templateUrl: './app/partials/posts.html',
+      contoller: 'postscontroller'
     });
 }

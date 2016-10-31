@@ -3,12 +3,8 @@
 <div id="senpai" ng-controller="blogcontroller as dankmeme">
 <textarea rows="30" cols="100" ng-model="dankmeme.entry">
 </textarea>
- 
-  <p>{{dankmeme.entry}}</p>
-  <button ng-click="dankmeme.submit()">SUBMIT</button> 
-  <!--<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
-  <script>
-    var socket = io();
 
-  </script>-->
+  <button ng-click="dankmeme.submit()">Submit</button>
+  <button ng-click="dankmeme.Posts()">Posts</button>
+  <button ng-click="dankmeme.search()">Search All</button>
 </div>

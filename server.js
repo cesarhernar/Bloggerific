@@ -28,7 +28,7 @@ app.post('/signin', (req, res) => {
 app.post('/message', (req, res) => {
 if(req.body) {
   record(req.body);
-  io.emit('newmessage');
+  io.emit('newmessage', {user: req.body.user});
   res.status(200).send('');
 }
 else res.status(400).send('error');

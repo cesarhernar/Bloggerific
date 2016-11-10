@@ -3,7 +3,9 @@ const app = angular
   .module('myApp', [
     'ngRoute',
     'blogcontroller',
-    'signincontroller'
+    'signincontroller',
+    'SocketService',
+    'ngFileUpload'
   ]);
 
 app.config(configFunction);

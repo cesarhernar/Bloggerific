@@ -1,5 +1,5 @@
-angular.module('postscontroller', ['userfactory'])
-        .controller('postscontroller', ['$http', 'userFactory', postscont]);
-function postscont($http, userfactory) {
+angular.module('postscontroller', ['userfactory', 'SocketService'])
+        .controller('postscontroller', ['$http', 'userFactory', 'SocketService', postscont]);
+function postscont($http, userfactory, SocketService) {
 
 };

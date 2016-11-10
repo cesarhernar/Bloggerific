@@ -12,22 +12,22 @@ function signincontroller($route, userFactory, $http, socketservice) {
   this.redi = () => {
     socketservice.eventEmitter('signin')
     userFactory.setdata(this.user, this.password);
-    window.location.replace('/#/blog');
-    this.user = '';
-    this.password = '';
-  //   var req = {
-  //   method: 'POST',
-  //   url: '/signin',
-  //   type: {
-  //     'Content-Type': 'application/json'
-  //   },
-  //   data: JSON.stringify({ user: this.user, password: this.password })
-  // }
-  //   $http(req).then((response) => {
-  //     if (response.data) {
-  //     }
-  //     else {
-  //       }
-  // })
+    var req = {
+    method: 'POST',
+    url: '/signin',
+    type: {
+      'Content-Type': 'application/json'
+    },
+    data: JSON.stringify({ user: this.user, password: this.password })
+  }
+    $http(req).then((response) => {
+      if (response.data) {
+        window.location.replace('/#/blog');
+      }
+      else {
+        this.user = '';
+        this.password = '';
+        }
+  })
   }
 }

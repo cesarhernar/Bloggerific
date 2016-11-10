@@ -1,31 +1,16 @@
 
-angular.module('blogcontroller', ['ngRoute', 'userFactory', 'ngFileUpload'])
-  .controller('blogcontroller', ['$http', 'userFactory', 'SocketService', 'Upload', blogcont])
+angular.module('blogcontroller', ['ngRoute'])
+  .controller('blogcontroller', ['$http', 'userFactory', 'SocketService', blogcont])
 
 
-function blogcont($http, userfactory, socketservice, Upload) {
+function blogcont($http, userfactory, socketservice) {
   this.entry = '';
   socketservice.eventListner('newmessage', (data) => {
-  console.log('there is a new message', 'data: ', data);})
-  
-    // Upload.upload({
-    //   url: './',
-    //   data: {file: file}
-    // }).then(function (resp) {
-    //         console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
-    //     }, function (resp) {
-    //         console.log('Error status: ' + resp.status);
-    //     }, function (evt) {
-    //         var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-    //         console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
-    //     });
-
-  }
-
+  console.log('there is a new message', 'data: ', data);
+})
 
 
   this.submit = () => {
-  console.log('this is upload', Upload);
     var req = {
       method: 'POST',
       url: '/message',
@@ -34,9 +19,11 @@ function blogcont($http, userfactory, socketservice, Upload) {
       },
       data: JSON.stringify({ user: userfactory.user, password: userfactory.password, post: this.entry })
     };
-    $http(req).then(response => {
-        this.entry = '';
-    })
+    if(this.entry.length > 0) {
+      $http(req).then(response => {
+          this.entry = '';
+      })
+  }
   }
   this.Posts = () => {
     window.location.replace('/#/posts');

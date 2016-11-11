@@ -1,5 +1,5 @@
 
-angular.module('signincontroller', ['ngRoute', 'userFactory'])
+angular.module('signincontroller', ['ngRoute'])
   .controller('signincontroller', ['$route', 'userFactory', '$http', 'SocketService', signincontroller]);
 
 
@@ -22,6 +22,8 @@ function signincontroller($route, userFactory, $http, socketservice) {
   }
     $http(req).then((response) => {
       if (response.data) {
+        userFactory.user = this.user;
+        userFactory.password = this.password;
         window.location.replace('/#/blog');
       }
       else {

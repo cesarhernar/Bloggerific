@@ -1,34 +1,38 @@
 
 angular.module('blogcontroller', ['ngRoute'])
-  .controller('blogcontroller', ['$http', 'userFactory', 'SocketService', blogcont])
+  .controller('blogcontroller', ['$http', 'userFactory', 'SocketService', '$scope', '$timeout', blogcont])
 
-
-function blogcont($http, userfactory, socketservice) {
-  this.entry = '';
+function blogcont($http, userfactory, socketservice, $scope, $timeout) {
+  $scope.entry = '';
+  $scope.nupost = [];
   socketservice.eventListner('newmessage', (data) => {
-  console.log('there is a new message', 'data: ', data);
+    if(data.user !== userfactory.user){
+      $scope.nupost.push(data.user);
+      $scope.$digest();
+      $timeout(() => {$scope.nupost.shift()}, 4000)
+    }
 })
 
 
-  this.submit = () => {
+  $scope.submit = () => {
     var req = {
       method: 'POST',
       url: '/message',
       type: {
         'Content-Type': 'application/json'
       },
-      data: JSON.stringify({ user: userfactory.user, password: userfactory.password, post: this.entry })
+      data: JSON.stringify({ user: userfactory.user, password: userfactory.password, post: $scope.entry })
     };
-    if(this.entry.length > 0) {
+    if($scope.entry.length > 0) {
       $http(req).then(response => {
-          this.entry = '';
+          $scope.entry = '';
       })
   }
   }
-  this.Posts = () => {
+  $scope.Posts = () => {
     window.location.replace('/#/posts');
   }
-  this.search = () => {
+  $scope.search = () => {
     var url = '/message?user=' + userfactory.user;
     var req = {
       method: 'GET',

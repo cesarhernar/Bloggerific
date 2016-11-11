@@ -5,7 +5,8 @@ const app = angular
     'blogcontroller',
     'signincontroller',
     'SocketService',
-    'ngFileUpload'
+    'ngFileUpload',
+    'userFactory'
   ]);
 
 app.config(configFunction);

@@ -1,10 +1,14 @@
 <div>
 </div>
-<div id="senpai" ng-controller="blogcontroller as dankmeme">
-<textarea rows="30" cols="100" ng-model="dankmeme.entry">
+<div id="senpai" ng-controller="blogcontroller">
+<textarea rows="30" cols="100" ng-model="entry">
 </textarea>
-<div>
-  <button ng-click="dankmeme.submit()">Submit</button>
-  <button ng-click="dankmeme.Posts()">Posts</button>
-  <button ng-click="dankmeme.search()">Search All</button>
+  <div>
+  <button ng-click="submit()">Submit</button>
+  <button ng-click="Posts()">Posts</button>
+  <button ng-click="search()">Search All</button>
+</div>
+  <ul>
+    <li ng-repeat="friends in nupost"> new post by {{friends}} </li>
+  </ul>
 </div>

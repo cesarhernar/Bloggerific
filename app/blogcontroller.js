@@ -11,7 +11,7 @@ function blogcont($http, userfactory, socketservice, $scope, $timeout) {
       $scope.$digest();
       $timeout(() => {$scope.nupost.shift()}, 4000)
     }
-})
+  })
 
 
   $scope.submit = () => {

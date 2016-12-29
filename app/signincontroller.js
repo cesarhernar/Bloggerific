@@ -18,12 +18,11 @@ function signincontroller($route, userFactory, $http, socketservice) {
     type: {
       'Content-Type': 'application/json'
     },
-    data: JSON.stringify({ user: this.user, password: this.password })
+    data: JSON.stringify({ username: this.user, password: this.password })
   }
     $http(req).then((response) => {
       if (response.data) {
-        userFactory.user = this.user;
-        userFactory.password = this.password;
+        userFactory.setdata(this.user, this.password, response.data.userid);
         window.location.replace('/#/blog');
       }
       else {

@@ -3,16 +3,13 @@ angular.module('userFactory', ['ngRoute'])
 
 
 function userFactory() {
-  this.user = '';
-  this.password = '';
-  // this.socket.on('retreival', data => {
-  //   this.id = data.id;
-  // })
-  this.setdata = (name, password) => {
+  this.user;
+  this.password;
+  this.userid;
+  this.setdata = (name, password, userid) => {
     this.password = password;
     this.user = name;
-
+    this.userid = userid;
   };
   return this;
-
 }

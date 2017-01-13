@@ -1,5 +1,4 @@
 const {newUser, newPost} = require('./dbcontroller');
-//socket abstractions?
 const serberCtrl = {
   home: (req, res) => {
     res.sendFile(__dirname + '/index.html');
@@ -13,7 +12,7 @@ const serberCtrl = {
         res.status(400).send(false);
       });
   },
-  mkPost: (req, res) => {
+  mkPost: (req, res, next) => {
     newPost(req.body)
       .then(result => {
         res.status(200).send(true);

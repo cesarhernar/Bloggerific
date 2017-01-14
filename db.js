@@ -21,7 +21,7 @@ start.then((result) => {
     )`);
 }).then((result) => {
   return connectdb.query(`CREATE TABLE posts
-    (post_id SMALLINT UNSIGNED,
+    (post_id SMALLINT UNSIGNED AUTO_INCREMENT,
     post TEXT,
     user_id SMALLINT UNSIGNED,
     CONSTRAINT pk_posts PRIMARY KEY (post_id),

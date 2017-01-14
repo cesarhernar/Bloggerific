@@ -24,7 +24,7 @@ io.on('connection', function (socket) {
 
 })
 
-
+function notify (req, res) { }
 
 http.listen(3000, () => {
   console.log('Listening on port 3000', __dirname);

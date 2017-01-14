@@ -12,7 +12,7 @@ const dbCtrl = {
   },
   newPost: ({userid, post}) => {
     return new Promise((resolve, error) => { 
-      connectdb.query(`INSERT INTO posts (post_id, post, user_id) VALUES (null, ${post}, ${userid})`,
+      connectdb.query(`INSERT INTO posts (post_id, post, user_id) VALUES (null, "${post}", ${userid})`,
         (err, rows, fields) => { 
           if (err) error(err);
           else resolve({rows, fields});

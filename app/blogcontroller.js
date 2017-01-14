@@ -21,7 +21,7 @@ function blogcont($http, userfactory, socketservice, $scope, $timeout) {
       type: {
         'Content-Type': 'application/json'
       },
-      data: JSON.stringify({ user: userfactory.user, password: userfactory.password, post: $scope.entry })
+      data: JSON.stringify({ user: userfactory.user, password: userfactory.password, post: $scope.entry, userid: userfactory.userid })
     };
     if($scope.entry.length > 0) {
       $http(req).then(response => {
